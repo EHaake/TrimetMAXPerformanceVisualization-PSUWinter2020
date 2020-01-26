@@ -1,4 +1,4 @@
-# Analyzing the Portland MAX performance by rail alignment paradigm
+# Analyzing the Portland MAX performance by Alignment Paradigm
 ### By Dan Durecka and Erik Haake
 
 ## Project Goal
