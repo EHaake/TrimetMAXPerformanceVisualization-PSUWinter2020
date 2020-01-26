@@ -1,4 +1,4 @@
-# TrimetPerformanceVisualization-PSUWinter2020
+# Analyzing the Portland MAX performance by rail alignment paradigm
 ### By Dan Durecka and Erik Haake
 
 ## Project Goal
