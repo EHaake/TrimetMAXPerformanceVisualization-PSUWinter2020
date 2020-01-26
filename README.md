@@ -16,6 +16,7 @@ Once the relevant data has been procured, it will be filtered and aggregated int
 ## Tasks
 
 The list of tasks is located in the Google Spreadsheet file below.
+
 https://docs.google.com/spreadsheets/d/1hBM3qPakyluOfjxSqv2ppmo5fPUkJjCX7iLPflvz4to/edit#gid=0
 
 ## Team Roles
