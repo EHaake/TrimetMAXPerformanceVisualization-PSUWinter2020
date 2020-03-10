@@ -1,5 +1,5 @@
-d3.csv('banfield.csv', formatter).then(data => {
-    d3.csv('max_segment_stops.csv').then(segmentData => {
+d3.csv('data/banfield.csv', formatter).then(data => {
+    d3.csv('data/max_segment_stops.csv').then(segmentData => {
 
         let dwellTimePerLocation = aggregateAttributeOverCol(data, "location_id", "dwell");
         dwellTimePerLocation = mapLocationIdToStopName(dwellTimePerLocation, segmentData);
