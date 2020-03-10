@@ -34,16 +34,7 @@ function createBarChart(data, selection, props) {
                 .attr('height', height);
     const { g, innerWidth, innerHeight } = marginConvention(svg, { width, height, margin });
    
-    // Add Graph Title
-    svg.append("text")
-       .attr("x", width / 2)
-       .attr("y", 40)
-       .attr("dy", "1em")
-       .attr('font-family', props.titleFontFamily)
-       .attr('fill', props.titleFontFill)
-       .style("text-anchor", "middle")
-       .style("font-size", props.titleFontSize)
-       .text(props.title);
+    addTitle(svg, props);
 
     const xScale = d3.scaleBand()
                      .domain(data.map(d => d.segment))

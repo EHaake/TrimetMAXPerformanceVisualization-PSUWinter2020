@@ -21,7 +21,8 @@ function render(data) {
         xAxisLabel: 'Stop Name',
         yAxisLabel: 'Dwell Time (minutes)',
         xAxisTickFontSize: '12px',
-        yAxisTickDensity: 50
+        yAxisTickDensity: 50,
+        title: "Dwell Per Stop On Insterstate"
     }));
 }
 
@@ -60,6 +61,8 @@ function createBarChart(data, selection, props) {
             .attr('width', xScale.bandwidth())
             .attr('y', d => yScale(d.dwell))
             .attr('height', d => innerHeight - yScale(d.dwell));  // KEY to right side up bars!!!!
+
+    addTitle(svg, props);
 
     // y Axis
     labeledYAxis(g, Object.assign({}, props, {
