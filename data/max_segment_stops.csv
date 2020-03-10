@@ -1,0 +1,47 @@
+stop_id,stop_name,segment,sequence,route_direction
+8373,Hollywood/NE 42nd Ave TC,banfield,3,West
+8372,NE 60th Ave,banfield,2,West
+8374,Lloyd Center/NE 11th Ave,banfield,4,West
+8371,NE 82nd Ave,banfield,1,West
+8370,Gateway/NE 99th Ave TC,banfield,0,West
+8344,Hollywood/NE 42nd Ave TC,banfield,1,East
+8346,NE 82nd Ave,banfield,3,East
+8345,NE 60th Ave,banfield,2,East
+8347,Gateway/NE 99th Ave TC,banfield,4,East
+8343,Lloyd Center/NE 11th Ave,banfield,0,East
+11500,Kenton/N Denver Ave,interstate,0,South
+11504,N Prescott St,interstate,4,South
+11505,Overlook Park,interstate,5,South
+11502,Rosa Parks,interstate,2,South
+11506,Albina/Mississippi,interstate,6,South
+11501,N Lombard TC,interstate,1,South
+11507,Interstate/Rose Quarter,interstate,7,South
+11503,N Killingsworth St,interstate,3,South
+11508,Interstate/Rose Quarter,interstate,0,North
+11512,N Killingsworth St,interstate,4,North
+11514,N Lombard TC,interstate,6,North
+11515,Kenton/N Denver Ave,interstate,7,North
+11513,Rosa Parks,interstate,5,North
+11511,N Prescott St,interstate,3,North
+11509,Albina/Mississippi,interstate,1,North
+11510,Overlook Park,interstate,2,North
+10118,Goose Hollow/SW Jefferson St,downtown,0,East
+9758,Providence Park,downtown,2,East
+8337,Oak/ SW 1st Ave,downtown,7,East
+8339,Old Town/Chinatown,downtown,9,East
+8338,Skidmore Fountain,downtown,8,East
+8335,Mall/SW 4th Ave,downtown,5,East
+8333,Library/SW 9th Ave,downtown,3,East
+8334,Pioneer Square South,downtown,4,East
+8336,Yamhill District,downtown,6,East
+9759,Kings Hill/SW Salmon St,downtown,1,East
+8378,Old Town/Chinatown,downtown,0,West
+9820,Kings Hill/SW Salmon St,downtown,8,West
+10117,Goose Hollow/SW Jefferson St,downtown,9,West
+9757,Providence Park,downtown,7,West
+8381,Morrison/SW 3rd Ave,downtown,3,West
+8380,Oak/ SW 1st Ave,downtown,2,West
+8379,Skidmore Fountain,downtown,1,West
+8382,Mall/SW 5th Ave,downtown,4,West
+8383,Pioneer Square North,downtown,5,West
+8384,Galleria/SW 10th Ave,downtown,6,West
