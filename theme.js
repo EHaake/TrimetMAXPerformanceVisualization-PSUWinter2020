@@ -1,0 +1,21 @@
+const myTheme = {
+    xAxisLabelFill: '#635F5D',
+    yAxisLabelFill: '#635F5D',
+    xAxisLabelOffset: 70,
+    yAxisLabelOffset: 70,
+    xAxisLabelFontSize: '24px',
+    yAxisLabelFontSize: '24px',
+    xAxisTickFontSize: '20px',
+    yAxisTickFontSize: '20px',
+    xAxisTickFontFill: '#8E8883',
+    yAxisTickFontFill: '#8E8883',
+    xAxisTickLineStroke: '#C0C0BB',
+    yAxisTickLineStroke: '#C0C0BB',
+    xAxisTickDensity: 70,
+    yAxisTickDensity: 70,
+    xAxisDomainLineStroke: '#C0C0BB',
+    yAxisDomainLineStroke: '#C0C0BB',
+    titleFontSize: '36px',
+    titleFontFill: '#3D3D3D',
+    titleFontFamily: "sans-serif"
+};
