@@ -1,15 +1,9 @@
-let dwellTimes = [
-    { segment: "Banfield", dwell: 35.86452212439221},
-    { segment: "Interstate", dwell: 29.13752671402992 },
-    { segment: "Downtown", dwell: 33.725260499564946 }
-];
-
-window.addEventListener('resize', render(dwellTimes));
-render(dwellTimes);
+window.addEventListener('resize', render(dwellPerSegment));
+render(dwellPerSegment);
 
 function render(data) {
-    const body = d3.select('body');
-    createBarChart(data, body, Object.assign({}, myTheme, {
+    const div = d3.select('#visualization');
+    createBarChart(data, div, Object.assign({}, myTheme, {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
         margin: { top: 100, bottom: 150, left: 150, right: 100 },
@@ -23,8 +17,6 @@ function render(data) {
 
 function averageAttribute(data, attribute) {
     data = d3.mean(data, d => d[attribute]);
-
-    console.log(data);
     return data;
 }
 

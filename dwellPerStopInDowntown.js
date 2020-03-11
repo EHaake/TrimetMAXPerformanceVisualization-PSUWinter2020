@@ -1,22 +1,23 @@
-d3.csv('data/downtown.csv', formatter).then(data => {
-    d3.csv('data/max_segment_stops.csv').then(segmentData => {
+// d3.csv('data/downtown.csv', formatter).then(data => {
+//     d3.csv('data/max_segment_stops.csv').then(segmentData => {
 
-        let dwellTimePerLocation = aggregateAttributeOverCol(data, "location_id", "dwell");
-        dwellTimePerLocation = mapLocationIdToStopName(dwellTimePerLocation, segmentData);
-        dwellTimePerLocation = aggregateAttributeOverCol(dwellTimePerLocation, "stop_name", "dwell");
-        console.log(dwellTimePerLocation);
-        render(dwellTimePerLocation);
-        window.addEventListener('resize', render(dwellTimePerLocation));
+//         let dwellTimePerLocation = aggregateAttributeOverCol(data, "location_id", "dwell");
+//         dwellTimePerLocation = mapLocationIdToStopName(dwellTimePerLocation, segmentData);
+//         dwellTimePerLocation = aggregateAttributeOverCol(dwellTimePerLocation, "stop_name", "dwell");
+//         console.log(dwellTimePerLocation);
+//         render(dwellTimePerLocation);
+//         window.addEventListener('resize', render(dwellTimePerLocation));
 
-    });
-});
+//     });
+// });
+
+render(dwellPerStopDowntown);
 
 function render(data) {
     const body = d3.select('body');
     createBarChart(data, body, Object.assign({}, myTheme,  {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
-        margin: { top: 100, bottom: 150, left: 150, right: 100 },
         xAxisLabel: 'Stop Name',
         yAxisLabel: 'Dwell Time (minutes)',
         xAxisTickFontSize: '12px',

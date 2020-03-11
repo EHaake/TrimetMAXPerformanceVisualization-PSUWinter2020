@@ -1,16 +1,17 @@
-d3.csv('data/banfield.csv', formatter).then(data => {
-    d3.csv('data/max_segment_stops.csv').then(segmentData => {
+// d3.csv('data/banfield.csv', formatter).then(data => {
+//     d3.csv('data/max_segment_stops.csv').then(segmentData => {
 
-        let dwellTimePerLocation = aggregateAttributeOverCol(data, "location_id", "dwell");
-        dwellTimePerLocation = mapLocationIdToStopName(dwellTimePerLocation, segmentData);
-        dwellTimePerLocation = aggregateAttributeOverCol(dwellTimePerLocation, "stop_name", "dwell");
-        console.log(dwellTimePerLocation);
-        render(dwellTimePerLocation);
-        window.addEventListener('resize', render(dwellTimePerLocation));
+//         let dwellTimePerLocation = aggregateAttributeOverCol(data, "location_id", "dwell");
+//         dwellTimePerLocation = mapLocationIdToStopName(dwellTimePerLocation, segmentData);
+//         dwellTimePerLocation = aggregateAttributeOverCol(dwellTimePerLocation, "stop_name", "dwell");
+//         console.log(dwellTimePerLocation);
+//         render(dwellTimePerLocation);
+//         window.addEventListener('resize', render(dwellTimePerLocation));
 
-    });
-});
+//     });
+// });
 
+render(dwellPerStopBanfield);
 
 function render(data) {
     const body = d3.select('body');

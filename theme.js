@@ -17,5 +17,6 @@ const myTheme = {
     yAxisDomainLineStroke: '#C0C0BB',
     titleFontSize: '36px',
     titleFontFill: '#3D3D3D',
-    titleFontFamily: "sans-serif"
+    titleFontFamily: "sans-serif",
+    margin: { top: 100, bottom: 150, left: 150, right: 100 },
 };
