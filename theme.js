@@ -1,4 +1,6 @@
 const myTheme = {
+    xMin: 0,
+    yMin: 0,
     xAxisLabelFill: '#635F5D',
     yAxisLabelFill: '#635F5D',
     xAxisLabelOffset: 70,

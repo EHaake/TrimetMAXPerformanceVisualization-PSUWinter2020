@@ -18,7 +18,6 @@ function render(data) {
     createBarChart(data, body, Object.assign({}, myTheme,  {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
-        margin: { top: 100, bottom: 150, left: 150, right: 100 },
         xAxisLabel: 'Stop Name',
         yAxisLabel: 'Dwell Time (minutes)',
         xAxisTickFontSize: '12px',

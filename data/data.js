@@ -34,8 +34,134 @@ const dwellPerStopInterstate = [
     { stop_name: "Rosa Parks", dwell: 24.473664747469456 }
 ];
 
-let dwellPerSegment = [
+const dwellPerSegment = [
     { segment: "Banfield", dwell: 35.86452212439221},
     { segment: "Interstate", dwell: 29.13752671402992 },
     { segment: "Downtown", dwell: 33.725260499564946 }
+];
+
+const arrivalDeltaPerStopBanfield = [
+    {
+        arrival_delta: 65.44963168468382,
+        route_direction: "East",
+        sequence: 0,
+        stop_name: "Lloyd Center/NE 11th"
+    },
+    {
+        arrival_delta: 117.81471709176195,
+        route_direction: "East",
+        sequence: 1,
+        stop_name: "Hollywood/NE 42nd"
+    },
+    {
+        arrival_delta: 119.35129780067366,
+        route_direction: "East",
+        sequence: 3,
+        stop_name: "NE 60th Ave"
+    },
+    {
+        arrival_delta: 116.98015446280183,
+        route_direction: "East",
+        sequence: 3,
+        stop_name: "NE 82nd Ave"
+    },
+    {
+        arrival_delta: 91.7756220636854,
+        route_direction: "East",
+        sequence: 4,
+        stop_name: "Gateway/NE 99th"
+    },
+    {
+        arrival_delta: -15.856158017041054,
+        route_direction: "West",
+        sequence: 0,
+        stop_name: "Gateway/NE 99th"
+    },
+    {
+        arrival_delta: 28.340517665584095,
+        route_direction: "West",
+        sequence: 1,
+        stop_name: "NE 82nd Ave"
+    },
+    {
+        arrival_delta: 36.790972701291025,
+        route_direction: "West",
+        sequence: 2,
+        stop_name: "NE 60th Ave"
+    },
+    {
+        arrival_delta: 44.583618080640434,
+        route_direction: "West",
+        sequence: 3,
+        stop_name: "Hollywood/NE 42nd"
+    },
+    {
+        arrival_delta: 50.21050141911069,
+        route_direction: "West",
+        sequence: 4,
+        stop_name: "Lloyd Center/NE 11th"
+    }
+];
+
+const arrivalDeltaPerStopBanfieldWithDirection = [
+    {
+        arrival_delta: 65.44963168468382,
+        route_direction: "East",
+        sequence: 0,
+        stop_name: "Lloyd Center/NE 11th (E)"
+    },
+    {
+        arrival_delta: 117.81471709176195,
+        route_direction: "East",
+        sequence: 1,
+        stop_name: "Hollywood/NE 42nd (E)"
+    },
+    {
+        arrival_delta: 119.35129780067366,
+        route_direction: "East",
+        sequence: 3,
+        stop_name: "NE 60th Ave (E)"
+    },
+    {
+        arrival_delta: 116.98015446280183,
+        route_direction: "East",
+        sequence: 3,
+        stop_name: "NE 82nd Ave (E)"
+    },
+    {
+        arrival_delta: 91.7756220636854,
+        route_direction: "East",
+        sequence: 4,
+        stop_name: "Gateway/NE 99th (E)"
+    },
+    {
+        arrival_delta: -15.856158017041054,
+        route_direction: "West",
+        sequence: 0,
+        stop_name: "Gateway/NE 99th (W)"
+    },
+    {
+        arrival_delta: 28.340517665584095,
+        route_direction: "West",
+        sequence: 1,
+        stop_name: "NE 82nd Ave (W)"
+    },
+    {
+        arrival_delta: 36.790972701291025,
+        route_direction: "West",
+        sequence: 2,
+        stop_name: "NE 60th Ave (W)"
+    },
+    {
+        arrival_delta: 44.583618080640434,
+        route_direction: "West",
+        sequence: 3,
+        stop_name: "Hollywood/NE 42nd (W)"
+    },
+    {
+        arrival_delta: 50.21050141911069,
+        route_direction: "West",
+        sequence: 4,
+        stop_name: "Lloyd Center/NE 11th (W)"
+    }
 ];

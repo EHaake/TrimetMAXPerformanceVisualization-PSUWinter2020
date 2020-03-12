@@ -4,13 +4,13 @@ body {
     right: 0px;
     top: 0px;
     bottom: 0px;
+    text-align: center;
 }
 
 h1 {
     margin: auto;
     width: 50%;
     padding: 10px;
-    text-align: center;
 }
 
 rect {
@@ -19,12 +19,30 @@ rect {
 
 .tooltip {
     opacity: 0;
-    position: absolute;
-    pointer-events: none;
+    position: absolute; pointer-events: none;
     border: 8px solid red;
     background-color: pink;
     padding: 10px;
     border-radius: 8px;
+}
+
+.bar--positive {
+  fill: steelblue;
+}
+
+.bar--negative {
+  fill: darkorange;
+}
+
+.axis text {
+  font: 18px sans-serif;
+  fill: #635F5D;
+}
+
+.axis path,
+.axis line {
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
 
 .tooltip p {
@@ -40,3 +58,4 @@ rect {
     bottom: -24px;
     margin-left: -4px;
 }
+
