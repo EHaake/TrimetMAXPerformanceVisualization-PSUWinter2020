@@ -443,32 +443,32 @@ const arrivalDeltaPerStopDowntownWithDirection = [
 
 const arrivalDeltaPerSegment = [
     {
-        segment: "Downtown",
+        segment: "Downtown (E)",
         route_direction: "East",
         arrival_delta: 25.274181510770468
     },
     {
-        segment: "Downtown",
+        segment: "Downtown (W)",
         route_direction: "West",
         arrival_delta: 68.7104537570441
     },
     {
-        segment: "Banfield",
+        segment: "Banfield (E)",
         route_direction: "East",
         arrival_delta: 102.27428462072135
     },
     {
-        segment: "Banfield",
+        segment: "Banfield (W)",
         route_direction: "West",
         arrival_delta: 28.81389036991704
     },
     {
-        segment: "Interstate",
+        segment: "Interstate (N)",
         route_direction: "North",
         arrival_delta: 131.96376203050116
     },
     {
-        segment: "Interstate",
+        segment: "Interstate (S)",
         route_direction: "South",
         arrival_delta: -1.6413082822729321
     }
