@@ -35,7 +35,7 @@ function createHorizontalBarChart(data, selection, props) {
     // Title
     svg.append('text')
        .attr('y', -30)
-       .attr('x', width / 10)
+       .attr('x', 0)
        .attr('class', 'graph-title')
        .style('font-size', '40px')
        .text(chartTitle);
@@ -47,8 +47,8 @@ function createHorizontalBarChart(data, selection, props) {
 
     // X-Axis label
     svg.append('text')
-       .attr('y', height + (height / 8))
-       .attr('x', width / 2 - (width / 10))
+       .attr('y', height + (height / 10))
+       .attr('x', width / 2 - (width / 5))
        .attr('class', 'x-axis-label')
        .text(xAxisLabel);
 

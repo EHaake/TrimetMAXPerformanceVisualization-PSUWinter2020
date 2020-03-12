@@ -394,3 +394,49 @@ const arrivalDeltaPerStopInterstateWithDirection = [
         route_direction: "North"
     },
 ];
+
+const arrivalDeltaPerStopDowntown = [
+{location_id: "10118", arrival_delta: -4.922524678432546, stop_name: "Goose Hollow/SW Jefferson St", sequence: 0, route_direction: "East"},
+{location_id: "9759", arrival_delta: 13.613446609052293, stop_name: "Kings Hill/SW Salmon St", sequence: 1, route_direction: "East"},
+{location_id: "9758", arrival_delta: 30.3267141689055, stop_name: "Providence Park", sequence: 2, route_direction: "East"},
+{location_id: "8333", arrival_delta: 21.671701700644345, stop_name: "Library/SW 9th Ave", sequence: 3, route_direction: "East"},
+{location_id: "8334", arrival_delta: 14.843242535358826, stop_name: "Pioneer Square South", sequence: 4, route_direction: "East"},
+{location_id: "8335", arrival_delta: 17.70323256510027, stop_name: "Mall/SW 4th Ave", sequence: 5, route_direction: "East"},
+{location_id: "8336", arrival_delta: 34.34304595974767, stop_name: "Yamhill District", sequence: 6, route_direction: "East"},
+{location_id: "8337", arrival_delta: 37.70207532667179, stop_name: "Oak/ SW 1st Ave", sequence: 7, route_direction: "East"},
+{location_id: "8338", arrival_delta: 47.817814371257484, stop_name: "Skidmore Fountain", sequence: 8, route_direction: "East"},
+{location_id: "8339", arrival_delta: 39.643066549399, stop_name: "Old Town/Chinatown", sequence: 9, route_direction: "East"},
+{location_id: "8378", arrival_delta: 55.78239705301934, stop_name: "Old Town/Chinatown", sequence: 0, route_direction: "West"},
+{location_id: "8379", arrival_delta: 62.1838783269962, stop_name: "Skidmore Fountain", sequence: 1, route_direction: "West"},
+{location_id: "8380", arrival_delta: 55.4671322301503, stop_name: "Oak/ SW 1st Ave", sequence: 2, route_direction: "West"},
+{location_id: "8381", arrival_delta: 53.10948813982522, stop_name: "Morrison/SW 3rd Ave", sequence: 3, route_direction: "West"},
+{location_id: "8382", arrival_delta: 63.293781057069715, stop_name: "Mall/SW 5th Ave", sequence: 4, route_direction: "West"},
+{location_id: "8383", arrival_delta: 53.802016498625115, stop_name: "Pioneer Square North", sequence: 5, route_direction: "West"},
+{location_id: "8384", arrival_delta: 62.99927901946648, stop_name: "Galleria/SW 10th Ave", sequence: 6, route_direction: "West"},
+{location_id: "9757", arrival_delta: 92.97422455220621, stop_name: "Providence Park", sequence: 7, route_direction: "West"},
+{location_id: "9820", arrival_delta: 94.43261868300154, stop_name: "Kings Hill/SW Salmon St", sequence: 8, route_direction: "West"},
+{location_id: "10117", arrival_delta: 93.05972201008095, stop_name: "Goose Hollow/SW Jefferson St", sequence: 9, route_direction: "West"}
+];
+
+const arrivalDeltaPerStopDowntownWithDirection = [
+{location_id: "10118", arrival_delta: -4.922524678432546, stop_name: "Goose Hollow/SW Jefferson St (E)", sequence: 0, route_direction: "East"},
+{location_id: "9759", arrival_delta: 13.613446609052293, stop_name: "Kings Hill/SW Salmon St (E)", sequence: 1, route_direction: "East"},
+{location_id: "9758", arrival_delta: 30.3267141689055, stop_name: "Providence Park (E)", sequence: 2, route_direction: "East"},
+{location_id: "8333", arrival_delta: 21.671701700644345, stop_name: "Library/SW 9th Ave (E)", sequence: 3, route_direction: "East"},
+{location_id: "8334", arrival_delta: 14.843242535358826, stop_name: "Pioneer Square South (E)", sequence: 4, route_direction: "East"},
+{location_id: "8335", arrival_delta: 17.70323256510027, stop_name: "Mall/SW 4th Ave (E)", sequence: 5, route_direction: "East"},
+{location_id: "8336", arrival_delta: 34.34304595974767, stop_name: "Yamhill District (E)", sequence: 6, route_direction: "East"},
+{location_id: "8337", arrival_delta: 37.70207532667179, stop_name: "Oak/ SW 1st Ave (E)", sequence: 7, route_direction: "East"},
+{location_id: "8338", arrival_delta: 47.817814371257484, stop_name: "Skidmore Fountain (E)", sequence: 8, route_direction: "East"},
+{location_id: "8339", arrival_delta: 39.643066549399, stop_name: "Old Town/Chinatown (E)", sequence: 9, route_direction: "East"},
+{location_id: "8378", arrival_delta: 55.78239705301934, stop_name: "Old Town/Chinatown (W)", sequence: 0, route_direction: "West"},
+{location_id: "8379", arrival_delta: 62.1838783269962, stop_name: "Skidmore Fountain (W)", sequence: 1, route_direction: "West"},
+{location_id: "8380", arrival_delta: 55.4671322301503, stop_name: "Oak/ SW 1st Ave (W)", sequence: 2, route_direction: "West"},
+{location_id: "8381", arrival_delta: 53.10948813982522, stop_name: "Morrison/SW 3rd Ave (W)", sequence: 3, route_direction: "West"},
+{location_id: "8382", arrival_delta: 63.293781057069715, stop_name: "Mall/SW 5th Ave (W)", sequence: 4, route_direction: "West"},
+{location_id: "8383", arrival_delta: 53.802016498625115, stop_name: "Pioneer Square North (W)", sequence: 5, route_direction: "West"},
+{location_id: "8384", arrival_delta: 62.99927901946648, stop_name: "Galleria/SW 10th Ave (W)", sequence: 6, route_direction: "West"},
+{location_id: "9757", arrival_delta: 92.97422455220621, stop_name: "Providence Park (W)", sequence: 7, route_direction: "West"},
+{location_id: "9820", arrival_delta: 94.43261868300154, stop_name: "Kings Hill/SW Salmon St (W)", sequence: 8, route_direction: "West"},
+{location_id: "10117", arrival_delta: 93.05972201008095, stop_name: "Goose Hollow/SW Jefferson St (W)", sequence: 9, route_direction: "West"}
+];
