@@ -39,6 +39,16 @@ rect {
   fill: #635F5D;
 }
 
+.x-axis-label {
+  font: 24px sans-serif;
+  fill: #635F5D;
+}
+
+.graph-title {
+  font: 48px sans-serif;
+  fill: #635F5D;
+}
+
 .axis path,
 .axis line {
   stroke: #000;
