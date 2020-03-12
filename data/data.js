@@ -1,6 +1,5 @@
 const dwellPerStopDowntown = [
-    { stop_name: "Galleria", dwell: 54.11117519826965 },
-    { stop_name: "Goose Hollow", dwell: 32.83650181770864 },
+    { stop_name: "Galleria", dwell: 54.11117519826965 }, { stop_name: "Goose Hollow", dwell: 32.83650181770864 },
     { stop_name: "Kings Hill", dwell: 24.73927454744034 },
     { stop_name: "SW 9th Ave", dwell: 26.02418928910954 },
     { stop_name: "SW 4th Ave", dwell: 42.91065549236755 },
@@ -164,4 +163,234 @@ const arrivalDeltaPerStopBanfieldWithDirection = [
         sequence: 4,
         stop_name: "Lloyd Center/NE 11th (W)"
     }
+];
+
+const arrivalDeltaPerStopInterstate = [
+    {
+        location_id: "11500",
+        arrival_delta: 0.3368121442125237,
+        stop_name: "Kenton/N Denver Ave",
+        sequence: 0,
+        route_direction: "South"
+    },
+    {
+        location_id: "11501",
+        arrival_delta: -6.980946527350953,
+        stop_name: "N Lombard TC",
+        sequence: 1,
+        route_direction: "South"
+    },
+    {
+        location_id: "11502",
+        arrival_delta: 0.3890644753476612,
+        stop_name: "Rosa Parks",
+        sequence: 2,
+        route_direction: "South"
+    },
+    {
+        location_id: "11503",
+        arrival_delta: -7.656609642301711,
+        stop_name: "N Killingsworth St",
+        sequence: 3,
+        route_direction: "South"
+    },
+    {
+        location_id: "11504",
+        arrival_delta: -1.3031618102913824,
+        stop_name: "N Prescott St",
+        sequence: 4,
+        route_direction: "South"
+    },
+    {
+        location_id: "11505",
+        arrival_delta: 2.8346556648682957,
+        stop_name: "Overlook Park",
+        sequence: 5,
+        route_direction: "South"
+    },
+    {
+        location_id: "11506",
+        arrival_delta: 3.216608778023366,
+        stop_name: "Albina/Mississippi",
+        sequence: 6,
+        route_direction: "South"
+    },
+    {
+        location_id: "11507",
+        arrival_delta: -3.9668893406912575,
+        stop_name: "Interstate/Rose Quarter",
+        sequence: 7,
+        route_direction: "South"
+    },
+    {
+        location_id: "11508",
+        arrival_delta: 137.18238822246457,
+        stop_name: "Interstate/Rose Quarter",
+        sequence: 0,
+        route_direction: "North"
+    },
+    {
+        location_id: "11509",
+        arrival_delta: 144.41753063147974,
+        stop_name: "Albina/Mississippi",
+        sequence: 1,
+        route_direction: "North"
+    },
+    {
+        location_id: "11510",
+        arrival_delta: 136.09762125424777,
+        stop_name: "Overlook Park",
+        sequence: 2,
+        route_direction: "North"
+    },
+    {
+        location_id: "11511",
+        arrival_delta: 128.68252044834898,
+        stop_name: "N Prescott St",
+        sequence: 3,
+        route_direction: "North"
+    },
+    {
+        location_id: "11512",
+        arrival_delta: 133.53642384105962,
+        stop_name: "N Killingsworth St",
+        sequence: 4,
+        route_direction: "North"
+    },
+    {
+        location_id: "11513",
+        arrival_delta: 128.5748180955394,
+        stop_name: "Rosa Parks",
+        sequence: 5,
+        route_direction: "North"
+    },
+    {
+        location_id: "11514",
+        arrival_delta: 122.59520884520884,
+        stop_name: "N Lombard TC",
+        sequence: 6,
+        route_direction: "North"
+    },
+    {
+        location_id: "11515",
+        arrival_delta: 124.62358490566038,
+        stop_name: "Kenton/N Denver Ave",
+        sequence: 7,
+        route_direction: "North"
+    },
+];
+
+const arrivalDeltaPerStopInterstateWithDirection = [
+    {
+        location_id: "11500",
+        arrival_delta: 0.3368121442125237,
+        stop_name: "Kenton/N Denver Ave (S)",
+        sequence: 0,
+        route_direction: "South"
+    },
+    {
+        location_id: "11501",
+        arrival_delta: -6.980946527350953,
+        stop_name: "N Lombard TC (S)",
+        sequence: 1,
+        route_direction: "South"
+    },
+    {
+        location_id: "11502",
+        arrival_delta: 0.3890644753476612,
+        stop_name: "Rosa Parks (S)",
+        sequence: 2,
+        route_direction: "South"
+    },
+    {
+        location_id: "11503",
+        arrival_delta: -7.656609642301711,
+        stop_name: "N Killingsworth St (S)",
+        sequence: 3,
+        route_direction: "South"
+    },
+    {
+        location_id: "11504",
+        arrival_delta: -1.3031618102913824,
+        stop_name: "N Prescott St (S)",
+        sequence: 4,
+        route_direction: "South"
+    },
+    {
+        location_id: "11505",
+        arrival_delta: 2.8346556648682957,
+        stop_name: "Overlook Park (S)",
+        sequence: 5,
+        route_direction: "South"
+    },
+    {
+        location_id: "11506",
+        arrival_delta: 3.216608778023366,
+        stop_name: "Albina/Mississippi (S)",
+        sequence: 6,
+        route_direction: "South"
+    },
+    {
+        location_id: "11507",
+        arrival_delta: -3.9668893406912575,
+        stop_name: "Interstate/Rose Quarter (S)",
+        sequence: 7,
+        route_direction: "South"
+    },
+    {
+        location_id: "11508",
+        arrival_delta: 137.18238822246457,
+        stop_name: "Interstate/Rose Quarter (N)",
+        sequence: 0,
+        route_direction: "North"
+    },
+    {
+        location_id: "11509",
+        arrival_delta: 144.41753063147974,
+        stop_name: "Albina/Mississippi (N)",
+        sequence: 1,
+        route_direction: "North"
+    },
+    {
+        location_id: "11510",
+        arrival_delta: 136.09762125424777,
+        stop_name: "Overlook Park (N)",
+        sequence: 2,
+        route_direction: "North"
+    },
+    {
+        location_id: "11511",
+        arrival_delta: 128.68252044834898,
+        stop_name: "N Prescott St (N)",
+        sequence: 3,
+        route_direction: "North"
+    },
+    {
+        location_id: "11512",
+        arrival_delta: 133.53642384105962,
+        stop_name: "N Killingsworth St (N)",
+        sequence: 4,
+        route_direction: "North"
+    },
+    {
+        location_id: "11513",
+        arrival_delta: 128.5748180955394,
+        stop_name: "Rosa Parks (N)",
+        sequence: 5,
+        route_direction: "North"
+    },
+    {
+        location_id: "11514",
+        arrival_delta: 122.59520884520884,
+        stop_name: "N Lombard TC (N)",
+        sequence: 6,
+        route_direction: "North"
+    },
+    {
+        location_id: "11515",
+        arrival_delta: 124.62358490566038,
+        stop_name: "Kenton/N Denver Ave (N)",
+        sequence: 7,
+        route_direction: "North"
+    },
 ];

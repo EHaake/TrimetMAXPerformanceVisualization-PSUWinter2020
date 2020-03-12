@@ -1,4 +1,4 @@
-d3.csv('data/banfield.csv', formatter).then(data => {
+d3.csv('data/interstate.csv', formatter).then(data => {
     d3.csv('data/max_segment_stops.csv').then(segmentData => {
         // console.log(data);
 
