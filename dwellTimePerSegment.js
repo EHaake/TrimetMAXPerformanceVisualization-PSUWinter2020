@@ -14,11 +14,6 @@ function render(data) {
     }));
 }
 
-function averageAttribute(data, attribute) {
-    data = d3.mean(data, d => d[attribute]);
-    return data;
-}
-
 // format data read from csv file
 // choose relevant columns and convert to number values
 function formatter(row) {
