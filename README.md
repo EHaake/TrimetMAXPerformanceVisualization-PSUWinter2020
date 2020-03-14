@@ -26,6 +26,6 @@ Erik will be the visualization chief and all around ‘design guy’. Both will 
 
 ## Slides
 
-Link to Topic Slides:https://docs.google.com/presentation/d/1G8Iwff3WGNNuuw8Ls1qbsYimKQsISUyN6GdZFdsv_fg/edit#slide=id.g7d75859a70_0_1091
+[Link to Topic Slides](https://docs.google.com/presentation/d/1G8Iwff3WGNNuuw8Ls1qbsYimKQsISUyN6GdZFdsv_fg/edit#slide=id.g7d75859a70_0_1091)
 
-Link to Final Slides: https://docs.google.com/presentation/d/1qHjNR96cmyuW_gzXfaL_mif3Q-Fq7w1ZgAvnm-SZisY/edit#slide=id.g7157502c4d_0_110
+[Link to Final Slides](https://docs.google.com/presentation/d/1qHjNR96cmyuW_gzXfaL_mif3Q-Fq7w1ZgAvnm-SZisY/edit#slide=id.g7157502c4d_0_110)
