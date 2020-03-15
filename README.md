@@ -23,3 +23,9 @@ https://docs.google.com/spreadsheets/d/1hBM3qPakyluOfjxSqv2ppmo5fPUkJjCX7iLPflvz
 
 Dan will be the designated data wrangler who will procure and filter out the unnecessary data.
 Erik will be the visualization chief and all around ‘design guy’. Both will work on the manual mapping of the data into the separate regions and paradigms and mapping the density of intersections. Dan will be the coordinator in charge of scheduling meetings and coordinating communication.
+
+## Slides
+
+[Link to Topic Slides](https://docs.google.com/presentation/d/1G8Iwff3WGNNuuw8Ls1qbsYimKQsISUyN6GdZFdsv_fg/edit#slide=id.g7d75859a70_0_1091)
+
+[Link to Final Slides](https://docs.google.com/presentation/d/1qHjNR96cmyuW_gzXfaL_mif3Q-Fq7w1ZgAvnm-SZisY/edit#slide=id.g7157502c4d_0_110)
