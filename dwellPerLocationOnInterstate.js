@@ -15,7 +15,7 @@ render(dwellPerStopInterstate);
 
 function render(data) {
     const body = d3.select('body');
-    createBarChart(data, body, Object.assign({}, myTheme,  {
+    createBarChart(data, body, Object.assign({}, myTheme, {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
         xAxisLabel: 'Stop Name',

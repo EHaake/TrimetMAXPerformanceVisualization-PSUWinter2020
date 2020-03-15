@@ -20,7 +20,7 @@ function createBarChart(data, selection, props) {
                      .padding(0.1);
 
     const yScale = d3.scaleLinear()
-                     .domain([yMin, d3.max(data, d => d[yVal]) + 5]).nice()
+                     .domain([yMin, d3.max(data, d => d[yVal])]).nice()
                      .range([innerHeight, 0]);
 
     // general update pattern

@@ -1,0 +1,41 @@
+stop_from,stop_to,segment,direction,sequence,num_intersections,distance,time_length
+Albina/Mississippi MAX Station,Interstate/Rose Quarter MAX Station,interstate,South,6,4,4113.565419728337,134.6238955051863235
+Albina/Mississippi MAX Station,Overlook Park MAX Station,interstate,North,1,3,3761.452412448242,125.7316590864148705
+Galleria/SW 10th Ave MAX Station,Providence Park MAX Station,downtown,West,6,8,2207.6154494147086,130.2368628827090096
+Gateway/NE 99th Ave TC MAX Station,NE 82nd Ave MAX Station,banfield,West,0,0,3948.024368525001,140.8747589199614272
+Goose Hollow/SW Jefferson St MAX Station,Kings Hill/SW Salmon St MAX Station,downtown,East,0,4,1249.3940510885736,84.9128552097428958
+Hollywood/NE 42nd Ave TC MAX Station,Lloyd Center/NE 11th Ave MAX Station,banfield,West,3,2,9189.85931115517,191.9692824275587613
+Hollywood/NE 42nd Ave TC MAX Station,NE 60th Ave MAX Station,banfield,East,1,0,5313.15179992643,119.3446515347235037
+Interstate/Rose Quarter MAX Station,Albina/Mississippi MAX Station,interstate,North,0,4,4442.239534893947,145.4360955056179775
+Kenton/N Denver Ave MAX Station,N Lombard TC MAX Station,interstate,South,0,4,3166.1944220670416,113.8349653202774378
+Kings Hill/SW Salmon St MAX Station,Goose Hollow/SW Jefferson St MAX Station,downtown,West,8,4,1249.3940510885736,82.6784193324749926
+Kings Hill/SW Salmon St MAX Station,Providence Park MAX Station,downtown,East,1,2,668.4835443771267,79.9212019790454016
+Library/SW 9th Ave MAX Station,Pioneer Square South MAX Station,downtown,East,3,3,688,89.3696884844242212
+Lloyd Center/NE 11th Ave MAX Station,Hollywood/NE 42nd Ave TC MAX Station,banfield,East,0,2,9180.256737259642,230.9529547805976508
+Mall/SW 4th Ave MAX Station,Yamhill District MAX Station,downtown,East,5,3,800,61.089322482596333
+Mall/SW 5th Ave MAX Station,Pioneer Square North MAX Station,downtown,West,4,2,570.0661744908588,44.1413195565601119
+Morrison/SW 3rd Ave MAX Station,Mall/SW 5th Ave MAX Station,downtown,West,3,2,593.457032470077,59.1830426523916422
+N Killingsworth St MAX Station,N Prescott St MAX Station,interstate,South,3,4,2584.4953661490526,91.298946088366437
+N Killingsworth St MAX Station,Rosa Parks MAX Station,interstate,North,4,3,2662.1905028281676,85.5422268907563025
+N Lombard TC MAX Station,Kenton/N Denver Ave MAX Station,interstate,North,6,4,2849.7478346198172,102.8743423715095103
+N Lombard TC MAX Station,Rosa Parks MAX Station,interstate,South,1,4,2657.7896417258826,87.516422226812642
+N Prescott St MAX Station,N Killingsworth St MAX Station,interstate,North,3,4,2877.321613167417,96.8722299860251547
+N Prescott St MAX Station,Overlook Park MAX Station,interstate,South,4,3,2303.6735114392045,91.420625
+NE 60th Ave MAX Station,Hollywood/NE 42nd Ave TC MAX Station,banfield,West,2,0,5311.31035213408,111.5570698466780239
+NE 60th Ave MAX Station,NE 82nd Ave MAX Station,banfield,East,2,0,7427.350259713469,147.8998443821973234
+NE 82nd Ave MAX Station,Gateway/NE 99th Ave TC MAX Station,banfield,East,3,0,3948.024368525001,155.9756442318147222
+NE 82nd Ave MAX Station,NE 60th Ave MAX Station,banfield,West,1,0,7442.053996059454,136.5819903303787268
+Oak/ SW 1st Ave MAX Station,Morrison/SW 3rd Ave MAX Station,downtown,West,2,3,1223.9578372979486,89.0646649333221505
+Oak/ SW 1st Ave MAX Station,Skidmore Fountain MAX Station,downtown,East,7,4,1113.9671335748992,79.1116573033707865
+Old Town/Chinatown MAX Station,Skidmore Fountain MAX Station,downtown,West,0,2,724.1236438783764,61.8488237905015535
+Overlook Park MAX Station,Albina/Mississippi MAX Station,interstate,South,5,3,4103.93671913293,138.8870488322717622
+Overlook Park MAX Station,N Prescott St MAX Station,interstate,North,2,3,2634.162525037004,102.6562015503875969
+Pioneer Square North MAX Station,Galleria/SW 10th Ave MAX Station,downtown,West,5,3,688.6867175619444,56.4956513144890295
+Pioneer Square South MAX Station,Mall/SW 4th Ave MAX Station,downtown,East,4,2,570,52.8756606130489094
+Providence Park MAX Station,Kings Hill/SW Salmon St MAX Station,downtown,West,7,2,668.4835443771267,63.395058195000954
+Providence Park MAX Station,Library/SW 9th Ave MAX Station,downtown,East,2,8,2208,148.7005924884514963
+Rosa Parks MAX Station,N Killingsworth St MAX Station,interstate,South,2,3,2592.2250080002577,84.619691923397169
+Rosa Parks MAX Station,N Lombard TC MAX Station,interstate,North,5,4,2630.0554371200637,91.0924664602683179
+Skidmore Fountain MAX Station,Oak/ SW 1st Ave MAX Station,downtown,West,1,4,1113.9671335748992,73.4656682966585167
+Skidmore Fountain MAX Station,Old Town/Chinatown MAX Station,downtown,East,8,2,724.1236438783764,62.7793396226415094
+Yamhill District MAX Station,Oak/ SW 1st Ave MAX Station,downtown,East,6,3,1262,83.2391084093211753

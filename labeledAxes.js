@@ -25,8 +25,11 @@ function labeledXAxis(selection, props) {
     xAxisG.call(xAxis)
           .selectAll('.tick text')
           .style('font-size', xAxisTickFontSize)
-          .attr('fill', xAxisTickFontFill);
-          // .attr('transform', 'rotate(-45)');
+          .attr('fill', xAxisTickFontFill)
+          .attr('transform', 'rotate(-90)')
+          .attr('x', 200)
+          .attr('y', -5);
+
     xAxisG.selectAll('.tick line')
           .attr('stroke', xAxisTickLineStroke);
     xAxisG.selectAll('.domain')
