@@ -27,7 +27,8 @@ function labeledXAxis(selection, props) {
           .style('font-size', xAxisTickFontSize)
           .attr('fill', xAxisTickFontFill)
           .attr('transform', 'rotate(-90)')
-          .attr('x', 170)
+          // .attr('x', 180)
+          .attr('x', 110)
           .attr('y', -5);
 
     xAxisG.selectAll('.tick line')

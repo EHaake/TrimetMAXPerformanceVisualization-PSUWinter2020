@@ -1,9 +1,9 @@
 d3.csv('data/agg_pair_data.csv', formatter).then(data => {
-    console.log(data);
 
     let banfieldData = [];
     let interstateData = [];
     let downtownData = [];
+    let overallData = [];
 
     data.forEach(row => {
         if (row.segment === "interstate") {
@@ -19,19 +19,21 @@ d3.csv('data/agg_pair_data.csv', formatter).then(data => {
     interstateData = sortData(interstateData);
     downtownData = sortData(downtownData);
 
+    overallData = aggregateOverallData(banfieldData, interstateData, downtownData);
+
     const selection = d3.select("#visualization");
 
-    createSubSegmentBarChart(interstateData, selection, Object.assign({}, myTheme, {
+    createSubSegmentBarChart(overallData, selection, Object.assign({}, myTheme, {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
-        xAxisLabel: 'MAX Stop Sub Sequence',
+        xAxisLabel: 'MAX Segment',
         yAxisLabel: 'Seconds Per Foot',
         xAxisTickFontSize: '12px',
-        yAxisTickDensity: 50,
+        yAxisTickDensity: 100,
         yAxisLabelOffset: 90,
         xAxisLabelOffset: 50,
-        title: "Unit Cost Between Stops (Interstate)",
-        xVal: "sub_segment",
+        title: "Unit Cost Between Segments",
+        xVal: "segment",
         yVal: "normalized_time",
         xAxisTickFontFill: "white",
         xAxisTickFontSize: "18px"
@@ -77,5 +79,28 @@ function sortData(data) {
     data.sort((a, b) => {
         return d3.ascending(a.direction, b.direction) || d3.ascending(a.sequence, b.sequence);
     })
+    return data;
+}
+
+function aggregateOverallData(banfield, interstate, downtown) {
+    let banfieldAvg = aggregateAttributeOverCol(banfield, 'direction', 'normalized_time');
+    let interstateAvg = aggregateAttributeOverCol(interstate, 'direction', 'normalized_time');
+    let downtownAvg = aggregateAttributeOverCol(downtown, 'direction', 'normalized_time');
+
+    banfieldAvg = addSegmentName(banfieldAvg, 'Banfield');
+    interstateAvg = addSegmentName(interstateAvg, 'Interstate');
+    downtownAvg = addSegmentName(downtownAvg, 'Downtown');
+
+    let overall = banfieldAvg.concat(interstateAvg, downtownAvg);
+    console.log(overall);
+
+    return overall;
+}
+
+function addSegmentName(data, segment) {
+    data.forEach(d => {
+        d.segment = segment + " " + d.direction;
+    });
+
     return data;
 }

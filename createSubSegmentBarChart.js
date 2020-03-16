@@ -20,7 +20,7 @@ function createSubSegmentBarChart(data, selection, props) {
                      .padding(0.1);
 
     const yScale = d3.scaleLinear()
-                     .domain([yMin, 0.10]).nice()
+                     .domain([yMin, 0.09])
                      .range([innerHeight, 0]);
 
     // general update pattern
@@ -30,10 +30,15 @@ function createSubSegmentBarChart(data, selection, props) {
     rect.enter()
         .append('rect')
         .merge(rect)
-        .attr('class', d => "bar bar--" + ((d.direction === 'North' || d.direction === 'West') ?
-                                           "north west" : "south east"))
-        .style('fill', d => ((d.direction === 'North' || d.direction === 'West') ?
-                                           "#386890" : "steelblue"))
+        // .attr('class', d => "bar bar--" + ((d.direction === 'North' || d.direction === 'West') ?
+        //                                    "north west" : "south east"))
+        // .style('fill', d => ((d.direction === 'North' || d.direction === 'West') ?
+        //                                    "#386890" : "steelblue"))
+        .style('fill', d => {
+            if (d.segment.includes("Ban")) return "#588ebb";
+            if (d.segment.includes("Inter")) return "#376890";
+            if (d.segment.includes("Down")) return "#23415a";
+        })
             .attr('x', d => xScale(d[xVal]))
             .attr('width', xScale.bandwidth())
             .attr('y', d => yScale(d[yVal]))
