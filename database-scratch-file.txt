@@ -1,0 +1,554 @@
+TRUNCATE cs410da;
+DROP TABLE banfield;
+CREATE TABLE banfield
+(
+    service_date CHARACTER(18) NOT NULL,
+    vehicle_number INTEGER NOT NULL,
+    leave_time INTEGER NOT NULL,
+    train INTEGER NOT NULL,
+    route_number INTEGER NOT NULL,
+    direction SMALLINT NOT NULL,
+    service_key CHARACTER(1) NOT NULL,
+    trip_number INTEGER NOT NULL,
+    stop_time INTEGER NOT NULL,
+    arrive_time INTEGER NOT NULL,
+    dwell INTEGER NOT NULL,
+    location_id INTEGER NOT NULL,
+    door INTEGER NOT NULL,
+    ons INTEGER NOT NULL,
+    offs INTEGER NOT NULL,
+    estimated_load INTEGER NOT NULL,
+    lift INTEGER NOT NULL,
+    maximum_speed INTEGER NOT NULL,
+    train_mileage FLOAT NOT NULL,
+    pattern_distance FLOAT NOT NULL,
+    location_distance FLOAT NOT NULL,
+    x_coordinate FLOAT NOT NULL,
+    y_coordinate FLOAT NOT NULL,
+    data_source INTEGER NOT NULL,
+    schedule_status INTEGER NOT NULL,
+    apc_status CHARACTER(1) NOT NULL
+);
+
+
+SELECT * FROM cs469;
+TRUNCATE cs469;
+DROP TABLE cs469;
+CREATE TABLE ctran_sample
+(
+    service_date DATE ,
+    vehicle_number INTEGER ,
+    leave_time INTEGER ,
+    train INTEGER ,
+    route_number INTEGER ,
+    direction SMALLINT,
+    service_key CHARACTER(1),
+    trip_number INTEGER ,
+    stop_time INTEGER,
+    arrive_time INTEGER ,
+    dwell INTEGER ,
+    location_id INTEGER,
+    door INTEGER ,
+    ons INTEGER ,
+    offs INTEGER ,
+    estimated_load INTEGER ,
+    lift INTEGER ,
+    maximum_speed INTEGER,
+    train_mileage FLOAT ,
+    pattern_distance FLOAT,
+    location_distance FLOAT,
+    x_coordinate FLOAT,
+    y_coordinate FLOAT,
+    data_source INTEGER ,
+    schedule_status INTEGER 
+);
+ALTER TABLE cs469 SET UNLOGGED;
+ALTER TABLE cs469 SET LOGGED;
+-- UPDATE max SET service_date = to_timestamp(service_date_ch,'DDMONYYYY:HH24:MI:SS') WHERE route_number IN (90, 190, 290, 100, 200);
+
+
+
+DROP TABLE max_stops;
+TRUNCATE TABLE max_stops;
+CREATE TABLE max_stops
+(
+    stop_id INTEGER NOT NULL,
+    stop_code INTEGER NOT NULL,
+    stop_name TEXT,
+    tts_stop_name TEXT,
+    stop_desc TEXT,
+    stop_lat FLOAT,
+    stop_lon FLOAT,
+    zone_id CHARACTER(1),
+    stop_url TEXT,
+    location_type TEXT,
+    parent_station TEXT,
+    direction VARCHAR(5),
+    position TEXT
+);
+DELETE FROM max_stops
+WHERE zone_id = 'B' OR zone_id = 'T';
+
+
+
+-- SEGMENTS
+CREATE TABLE banfield AS
+    (
+        SELECT *
+        FROM cs410da
+        WHERE location_id IN
+            (
+                SELECT stop_id
+                FROM max_segment_stops
+                WHERE segment = 'banfield'
+            )
+    );
+
+CREATE TABLE interstate AS
+    (
+        SELECT *
+        FROM cs410da
+        WHERE location_id IN
+              (
+                  SELECT stop_id
+                  FROM max_segment_stops
+                  WHERE segment = 'interstate'
+              )
+    );
+
+CREATE TABLE downtown AS
+    (
+        SELECT *
+        FROM cs410da
+        WHERE location_id IN
+            (
+                SELECT stop_id
+                FROM max_segment_stops
+                WHERE segment = 'downtown'
+            )
+    );
+
+
+
+-- DWELL TIMES
+CREATE TABLE banfield_dwell AS
+    (
+        SELECT b.dwell, m.stop_name
+        FROM banfield b, max_segment_stops m
+        WHERE b.location_id = m.stop_id
+    );
+
+CREATE TABLE interstate_dwell AS
+    (
+        SELECT i.dwell, m.stop_name
+        FROM interstate i, max_segment_stops m
+        WHERE i.location_id = m.stop_id
+    );
+
+CREATE TABLE downtown_dwell AS
+    (
+        SELECT d.dwell, m.stop_name
+        FROM downtown d, max_segment_stops m
+        WHERE d.location_id = m.stop_id
+    );
+
+CREATE INDEX b_dwell_idx ON banfield_dwell(dwell);
+CLUSTER banfield_dwell USING b_dwell_idx;
+
+CREATE INDEX i_dwell_idx ON interstate_dwell(dwell);
+CLUSTER interstate_dwell USING i_dwell_idx;
+
+CREATE INDEX d_dwell_idx ON downtown_dwell(dwell);
+CLUSTER downtown_dwell USING d_dwell_idx;
+
+SELECT * FROM banfield_dwell WHERE dwell > 0;
+
+SELECT COUNT(*) FROM banfield_dwell;
+
+
+
+DROP TABLE max_segment_stops;
+CREATE TABLE max_segment_stops
+(
+    stop_id INTEGER NOT NULL,
+    stop_name TEXT,
+    segment VARCHAR(64),
+    sequence SMALLINT,
+    route_direction VARCHAR(5)
+);
+
+INSERT INTO max_segment_stops
+    (
+        SELECT stop_id, stop_name, 'interstate', 0
+        FROM max_stops
+        WHERE stop_id BETWEEN 11500 AND 11515
+        ORDER BY direction, stop_id
+    );
+
+INSERT INTO max_segment_stops
+    (
+        SELECT stop_id, stop_name, 'banfield', 0
+        FROM max_stops
+        WHERE
+          stop_id BETWEEN 8343 AND 8347
+        OR
+          stop_id BETWEEN 8370 AND 8374
+        ORDER BY direction, stop_id
+    );
+
+INSERT INTO max_segment_stops
+    (
+        SELECT stop_id, stop_name, 'downtown', 0
+        FROM max_stops
+        WHERE
+          stop_id BETWEEN 8333 AND 8339
+        OR
+          stop_id BETWEEN 8378 AND 8384
+        OR
+          stop_id IN (10117, 10118, 9759, 9820, 9758, 9757)
+        ORDER BY direction, stop_id
+    );
+
+SELECT * FROM max_segment_stops;
+
+UPDATE max_segment_stops SET route_direction = 'West' WHERE stop_id BETWEEN 8370 AND 8374;
+UPDATE max_segment_stops SET route_direction = 'East' WHERE stop_id BETWEEN 8343 AND 8347;
+SELECT * FROM max_segment_stops WHERE stop_id BETWEEN 8370 AND 8374 ORDER BY sequence;
+SELECT * FROM max_segment_stops WHERE stop_id BETWEEN 8343 AND 8347 ORDER BY sequence;
+
+UPDATE max_segment_stops SET route_direction = 'South' WHERE stop_id BETWEEN 11500 AND 11507;
+UPDATE max_segment_stops SET route_direction = 'North' WHERE stop_id BETWEEN 11508 AND 11515;
+SELECT * FROM max_segment_stops WHERE stop_id BETWEEN 11500 AND 11507 ORDER BY sequence;
+SELECT * FROM max_segment_stops WHERE stop_id BETWEEN 11508 AND 11515 ORDER BY sequence;
+
+UPDATE max_segment_stops SET route_direction = 'East' WHERE stop_id BETWEEN 8333 AND 8339 OR stop_id IN (10118, 9759, 9758);
+SELECT * FROM max_segment_stops WHERE stop_id BETWEEN 8333 AND 8339 OR stop_id IN (10118, 9759, 9758) ORDER BY sequence;
+SELECT * FROM max_segment_stops WHERE stop_id IN (10118, 9759, 9758) ORDER BY sequence;
+
+UPDATE max_segment_stops SET route_direction = 'West' WHERE stop_id BETWEEN 8378 AND 8384 OR stop_id IN (10117, 9820, 9757);
+SELECT * FROM max_segment_stops WHERE stop_id BETWEEN 8378 AND 8384 OR stop_id IN (10117, 9820, 9757) ORDER BY sequence;
+SELECT * FROM max_segment_stops WHERE stop_id IN (10117, 9820, 9757) ORDER BY stop_id;
+
+
+
+SELECT * FROM max_segment_stops WHERE segment = 'interstate' AND route_direction = 'South' ORDER BY sequence;
+
+
+
+SELECT * FROM banfield_dwell WHERE dwell > 0 LIMIT 10;
+
+
+
+DROP TABLE max;
+CREATE TABLE max AS
+    (
+        SELECT *
+        FROM cs410da
+        WHERE route_number IN (90, 190, 290, 100, 200)
+        AND location_id IN
+            (
+                SELECT stop_id
+                FROM max_segment_stops
+            )
+    );
+
+
+
+
+SELECT
+       s.stop_from_name AS "location_from",
+       s.stop_to_name AS "location_to",
+       s.route_direction AS "direction",
+       m1.pattern_distance AS "pd1",
+       m2.pattern_distance AS "pd2"
+FROM max m1, max m2, max_stop_pairs s
+WHERE m1.trip_number = m2.trip_number
+AND m1.service_date = m2.service_date
+AND m1.location_id = s.stop_from_id
+AND m2.location_id = s.stop_to_id
+AND m2.arrive_time > m1.leave_time
+AND (m2.arrive_time - m1.leave_time) BETWEEN 30 AND 1200
+ORDER BY s.stop_from_name;
+
+
+-- QUERY TO BE USED FOR FINAL GRAPHIC
+SELECT
+       s.stop_from_name AS "location_from",
+       s.stop_to_name AS "location_to",
+       s.segment AS "segment",
+       s.route_direction AS "direction",
+       s.sequence AS "sequence",
+       s.intersections AS "intersections",
+       s.distance AS "distance",
+       AVG(m2.arrive_time - m1.leave_time) AS "avg_diff"
+FROM max m1, max m2, max_stop_pairs s
+WHERE m1.trip_number = m2.trip_number
+AND m1.service_date = m2.service_date
+AND m1.location_id = s.stop_from_id
+AND m2.location_id = s.stop_to_id
+AND m2.arrive_time > m1.leave_time
+AND (m2.arrive_time - m1.leave_time) BETWEEN 30 AND 1200
+GROUP BY s.stop_to_name, s.stop_from_name, s.segment, s.route_direction, s.sequence, s.intersections, s.distance
+ORDER BY s.stop_from_name;
+
+
+
+SELECT COUNT(*) FROM
+    (
+SELECT
+       s.stop_from_name AS "location_from",
+       s.stop_to_name AS "location_to",
+       (m2.arrive_time - m1.leave_time) AS "travel_diff_t",
+       ((m2.arrive_time - m1.leave_time) / 60) AS "travel_diff_m",
+       ((m2.arrive_time - m1.leave_time) % 60) AS "travel_diff_s",
+       s.route_direction AS "direction",
+       m1.leave_time AS "leave",
+       m2.arrive_time AS "arrive",
+       AVG(m2.arrive_time - m1.leave_time) AS "avg_diff"
+FROM max m1, max m2, max_stop_pairs s
+WHERE m1.trip_number = m2.trip_number
+AND m1.service_date = m2.service_date
+AND m1.location_id = s.stop_from_id
+AND m2.location_id = s.stop_to_id
+AND m2.arrive_time - m1.leave_time
+-- AND m2.arrive_time > (m1.arrive_time + (m1.dwell - m1.arrive_time))
+-- AND m2.arrive_time - m1.leave_time > 5
+-- AND m2.arrive_time < (m1.leave_time + (m2.arrive_time - m1.leave_time)) + 900
+-- AND m2.arrive_time - m1.leave_time > (m1.leave_time + (m2.arrive_time - m1.leave_time)) - (0.5 * (m2.arrive_time - m1.leave_time))
+ORDER BY (m2.arrive_time - m1.arrive_time)
+) AS t;
+-- LIMIT 100;
+
+
+
+SELECT
+       s.stop_from_name AS "location_from",
+       s.stop_to_name AS "location_to",
+       s.route_direction AS "direction",
+       AVG(m2.arrive_time - m1.leave_time) AS "avg_diff",
+       VARIANCE(m2.arrive_time - m1.leave_time) AS "avg_var"
+FROM max m1, max m2, max_stop_pairs s
+WHERE m1.trip_number = m2.trip_number
+AND m1.service_date = m2.service_date
+AND m1.location_id = s.stop_from_id
+AND m2.location_id = s.stop_to_id
+AND m2.arrive_time > m1.leave_time
+GROUP BY s.stop_to_name, s.stop_from_name, s.route_direction
+ORDER BY s.stop_from_name;
+
+
+
+
+SELECT
+       s.stop_from_name AS "location_from",
+       s.stop_to_name AS "location_to",
+       s.route_direction AS "direction",
+       COUNT(*),
+       MAX(m2.arrive_time - m1.leave_time),
+       MIN(m2.arrive_time - m1.leave_time),
+       PERCENTILE_CONT(0.25, m2.arrive_time - m1.leave_time) WITHIN GROUP (ORDER BY s.stop_from_name),
+       PERCENTILE_CONT(0.50, m2.arrive_time - m1.leave_time) WITHIN GROUP (ORDER BY s.stop_from_name),
+       PERCENTILE_CONT(0.75, m2.arrive_time - m1.leave_time) WITHIN GROUP (ORDER BY s.stop_from_name)
+FROM max m1, max m2, max_stop_pairs s
+WHERE m1.trip_number = m2.trip_number
+AND m1.service_date = m2.service_date
+AND m1.location_id = s.stop_from_id
+AND m2.location_id = s.stop_to_id
+AND m2.arrive_time > m1.leave_time
+AND ((m2.arrive_time - m1.leave_time) < 600)
+GROUP BY s.stop_to_name, s.stop_from_name, s.route_direction
+ORDER BY s.stop_from_name;
+
+
+
+
+SELECT
+       s.stop_from_name AS "location_from",
+       s.stop_to_name AS "location_to",
+       (m2.arrive_time - m1.leave_time) AS "travel_diff_t",
+       ((m2.arrive_time - m1.leave_time) / 60) AS "travel_diff_m",
+       ((m2.arrive_time - m1.leave_time) % 60) AS "travel_diff_s",
+       s.route_direction AS "direction",
+       m1.leave_time AS "leave",
+       m2.arrive_time AS "arrive"
+FROM max m1, max m2, max_stop_pairs s
+WHERE m1.trip_number = m2.trip_number
+AND m1.service_date = m2.service_date
+AND m1.location_id = s.stop_from_id
+AND m2.location_id = s.stop_to_id
+AND m2.arrive_time > (m1.arrive_time + (m1.dwell - m1.arrive_time))
+-- AND m2.arrive_time - m1.leave_time > 5
+-- AND m2.arrive_time < (m1.leave_time + (m2.arrive_time - m1.leave_time)) + 900
+-- AND m2.arrive_time - m1.leave_time > (m1.leave_time + (m2.arrive_time - m1.leave_time)) - (0.5 * (m2.arrive_time - m1.leave_time))
+ORDER BY (m2.arrive_time - m1.arrive_time);
+
+
+
+SELECT * FROM max_segment_stops WHERE route_direction = 'West' AND segment = 'banfield';
+
+SELECT COUNT(DISTINCT service_date) FROM max;
+
+TRUNCATE TABLE max_stop_pairs;
+DROP TABLE max_stop_pairs;
+CREATE TABLE max_stop_pairs AS
+    (
+        SELECT m1.stop_id         AS "stop_from_id",
+               m2.stop_id         AS "stop_to_id",
+               m1.stop_name       AS "stop_from_name",
+               m2.stop_name       AS "stop_to_name",
+               m1.route_direction AS "route_direction",
+               m1.segment         AS "segment",
+               m1.sequence        AS "sequence"
+        FROM max_segment_stops m1,
+             max_segment_stops m2
+        WHERE m1.segment = m2.segment
+          AND m1.route_direction = m2.route_direction
+          AND m1.sequence = m2.sequence - 1
+        ORDER BY m1.segment, m1.route_direction, m1.sequence
+    );
+ALTER TABLE max_stop_pairs
+ADD COLUMN intersections INTEGER;
+ALTER TABLE max_stop_pairs
+ADD COLUMN distance FLOAT;
+
+SELECT stop_from_name, stop_to_name, distance
+FROM max_stop_pairs
+WHERE segment = 'downtown'
+ORDER BY route_direction, sequence;
+
+UPDATE max_stop_pairs
+SET distance = 0;
+
+UPDATE max_stop_pairs m
+SET distance = sq.pdavg
+FROM
+(
+    SELECT
+           s.stop_from_id AS "stop_from_id",
+           s.stop_to_id AS "stop_to_id",
+           AVG(ABS(m2.pattern_distance - m1.pattern_distance)) AS "pdavg"
+    FROM max m1, max m2, max_stop_pairs s
+    WHERE m1.trip_number = m2.trip_number
+    AND m1.service_date = m2.service_date
+    AND m1.location_id = s.stop_from_id
+    AND m2.location_id = s.stop_to_id
+    AND m1.pattern_distance > 0
+    AND m2.pattern_distance > 0
+--     AND ABS(m1.pattern_distance -
+--             (
+--             SELECT p.distance
+--             FROM pdavg p
+--             WHERE m1.location_id = p.stop_id
+--             )) < 500
+--     AND ABS(m2.pattern_distance -
+--         (
+--             SELECT p.distance
+--             FROM pdavg p
+--             WHERE m2.location_id = p.stop_id
+--         )) < 500
+    GROUP BY s.stop_from_id, s.stop_to_id
+) AS sq
+WHERE m.distance = 0
+AND sq.stop_from_id = m.stop_from_id
+AND sq.stop_to_id = m.stop_to_id;
+
+CREATE TABLE pdavg AS
+    (
+        SELECT m.location_id AS "stop_id",
+               AVG(m.pattern_distance) AS "distance"
+        FROM max m
+        WHERE m.location_id IN (SELECT stop_id FROM max_stops)
+        AND m.pattern_distance > 0
+        GROUP BY m.location_id
+    );
+
+
+SELECT COUNT(*) FROM pdavg;
+SELECT * FROM pdavg;
+SELECT COUNT(*) FROM max_segment_stops WHERE segment = 'interstate';
+SELECT stop_from_name, stop_to_name, distance FROM max_stop_pairs;
+
+
+
+SELECT
+       s.stop_from_id AS "stop_from_id",
+       s.stop_to_id AS "stop_to_id",
+       AVG(ABS(m2.pattern_distance - m1.pattern_distance)) AS "pdavg"
+FROM max m1, max m2, max_stop_pairs s
+WHERE m1.trip_number = m2.trip_number
+AND m1.service_date = m2.service_date
+AND m1.location_id = s.stop_from_id
+AND m2.location_id = s.stop_to_id
+AND m1.pattern_distance > 0
+AND m2.pattern_distance > 0
+AND ABS(m1.pattern_distance -
+        (
+        SELECT p.distance
+        FROM pdavg p
+        WHERE m1.location_id = p.stop_id
+        )) < 500
+AND ABS(m2.pattern_distance -
+    (
+        SELECT p.distance
+        FROM pdavg p
+        WHERE m2.location_id = p.stop_id
+    )) < 500
+GROUP BY s.stop_from_id, s.stop_to_id;
+
+
+
+SELECT *
+FROM pdavg
+WHERE stop_id IN
+      (
+          SELECT stop_to_id
+          FROM max_stop_pairs
+          WHERE segment = 'downtown'
+          AND route_direction = 'West'
+      );
+
+
+
+
+
+UPDATE max_stop_pairs m
+SET distance = sq.distance
+FROM
+(
+    SELECT
+           s.stop_from_name AS "stop_from_name",
+           s.stop_to_name AS "stop_to_name",
+           s.distance AS "distance"
+    FROM max_stop_pairs s
+) AS sq
+WHERE m.distance = 0
+AND sq.stop_from_name = m.stop_to_name
+AND sq.stop_to_name = m.stop_from_name;
+
+SELECT COUNT(*) FROM pdavg;
+SELECT * FROM pdavg;
+SELECT COUNT(*) FROM max_segment_stops WHERE segment = 'interstate';
+
+SELECT
+       m1.stop_from_name,
+       m1.stop_to_name,
+       m2.stop_from_name,
+       m2.stop_to_name,
+       m1.distance,
+       m2.distance
+FROM max_stop_pairs m1, max_stop_pairs m2
+WHERE m1.sequence = 8 - m2.sequence
+AND m1.segment = 'downtown'
+AND m2.segment = 'downtown'
+AND m1.route_direction = 'East'
+AND m2.route_direction = 'West'
+AND ABS(m2.distance - m1.distance) > 500;
+
+SELECT * FROM max_stop_pairs;
+
+SELECT MAX(sequence) FROM max_stop_pairs WHERE segment = 'downtown';
+
+UPDATE max_stop_pairs
+SET distance = 2208
+WHERE stop_from_name LIKE 'Providence Park MAX Station'
+AND stop_to_name LIKE 'Library/SW 9th Ave MAX Station';
