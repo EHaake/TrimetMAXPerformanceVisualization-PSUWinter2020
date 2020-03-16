@@ -6,8 +6,13 @@ function render(data) {
     createBarChart(data, div, Object.assign({}, myTheme, {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
+        titleFontSize: '40px',
         xAxisLabel: 'MAX Segment',
         yAxisLabel: 'Dwell Time (minutes)',
+        xAxisTickFontSize: '30px',
+        xAxisTickFontFill: 'white',
+        yAxisTickDensity: 50,
+        xAxisLabelOffset: 40,
         title: "Average Dwell Time Per MAX Segment",
         xVal: "segment",
         yVal: "dwell"

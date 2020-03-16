@@ -1,6 +1,6 @@
 // selection: The dom element you wish to use
 // props: An object consisting of properties to apply to the selection
-function createBarChart(data, selection, props) {
+function createSubSegmentBarChart(data, selection, props) {
     const { width, height, margin, xVal, yVal, yMin } = props;
 
     // general update pattern
@@ -20,7 +20,7 @@ function createBarChart(data, selection, props) {
                      .padding(0.1);
 
     const yScale = d3.scaleLinear()
-                     .domain([yMin, 60]).nice()
+                     .domain([yMin, 0.10]).nice()
                      .range([innerHeight, 0]);
 
     // general update pattern
@@ -30,13 +30,17 @@ function createBarChart(data, selection, props) {
     rect.enter()
         .append('rect')
         .merge(rect)
+        .attr('class', d => "bar bar--" + ((d.direction === 'North' || d.direction === 'West') ?
+                                           "north west" : "south east"))
+        .style('fill', d => ((d.direction === 'North' || d.direction === 'West') ?
+                                           "#386890" : "steelblue"))
             .attr('x', d => xScale(d[xVal]))
             .attr('width', xScale.bandwidth())
             .attr('y', d => yScale(d[yVal]))
             .attr('height', d => innerHeight - yScale(d[yVal]));  // KEY to right side up bars!!!!
 
     addTitle(svg, props);
-   
+
     // y Axis
     labeledYAxis(g, Object.assign({}, props, {
         yScale,

@@ -20,7 +20,8 @@ function createHorizontalBarChart(data, selection, props) {
                        .append("g")
                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    x.domain(d3.extent(data, d => d[xVal])).nice();
+    // x.domain(d3.extent(data, d => d[xVal])).nice();
+    x.domain([0, 160]);
     y.domain(data.map(d => d[yVal]));
 
     svg.selectAll(".bar")

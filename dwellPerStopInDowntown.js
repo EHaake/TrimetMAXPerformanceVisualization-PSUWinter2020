@@ -18,10 +18,13 @@ function render(data) {
     createBarChart(data, body, Object.assign({}, myTheme,  {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
+        titleFontSize: '40px',
         xAxisLabel: 'Stop Name',
         yAxisLabel: 'Dwell Time (minutes)',
-        xAxisTickFontSize: '12px',
+        xAxisTickFontSize: '18px',
+        xAxisTickFontFill: 'white',
         yAxisTickDensity: 50,
+        xAxisLabelOffset: 40,
         title: "Dwell Per Stop In Downtown",
         xVal: "stop_name",
         yVal: "dwell"

@@ -18,9 +18,11 @@ function render(data) {
     createBarChart(data, body, Object.assign({}, myTheme, {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
+        titleFontSize: '40px',
         xAxisLabel: 'Stop Name',
         yAxisLabel: 'Dwell Time (minutes)',
-        xAxisTickFontSize: '12px',
+        xAxisTickFontSize: '18px',
+        xAxisTickFontFill: 'white',
         yAxisTickDensity: 50,
         title: "Dwell Per Stop On Insterstate",
         xVal: "stop_name",

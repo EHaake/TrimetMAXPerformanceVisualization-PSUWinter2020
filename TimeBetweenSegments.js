@@ -1,6 +1,4 @@
 d3.csv('data/agg_pair_data.csv', formatter).then(data => {
-    // data.slice().sort((a, b) => d3.ascending(a.sequence, b.sequence));
-
     console.log(data);
 
     let banfieldData = [];
@@ -17,26 +15,22 @@ d3.csv('data/agg_pair_data.csv', formatter).then(data => {
         }
     });
 
-    // banfieldData.sort((x, y) => {
-    //     return d3.ascending(x.sequence, y.sequence);
-    // });
     banfieldData = sortData(banfieldData);
     interstateData = sortData(interstateData);
     downtownData = sortData(downtownData);
 
-
     const selection = d3.select("#visualization");
 
-    createBarChart(interstateData, selection, Object.assign({}, myTheme, {
+    createSubSegmentBarChart(interstateData, selection, Object.assign({}, myTheme, {
         width: document.body.clientWidth,
         height: document.body.clientHeight,
         xAxisLabel: 'MAX Stop Sub Sequence',
-        yAxisLabel: 'Normalized Time',
+        yAxisLabel: 'Seconds Per Foot',
         xAxisTickFontSize: '12px',
         yAxisTickDensity: 50,
         yAxisLabelOffset: 90,
         xAxisLabelOffset: 50,
-        title: "Time/Distance Between Stops (Interstate)",
+        title: "Unit Cost Between Stops (Interstate)",
         xVal: "sub_segment",
         yVal: "normalized_time",
         xAxisTickFontFill: "white",
